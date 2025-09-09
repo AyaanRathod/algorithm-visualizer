@@ -91,7 +91,29 @@ function merge(leftArr, rightArr) {
     return result;
 }
 
+
+
+export function bubbleSortIterative(inputArray) {
+    const arr = inputArray.slice(); // Create a copy to avoid modifying original
+    const swaps = [];
+    
+    let swapped;
+    do {
+        swapped = false;
+        for(let i = 1; i < arr.length; i++) {
+            if(arr[i-1] > arr[i]) {
+                swapped = true;
+                swaps.push([i-1, i]);
+                [arr[i-1], arr[i]] = [arr[i], arr[i-1]];
+            }
+        }
+    } while (swapped);
+    
+    return swaps;
+}
+
 export default {
     mergeSort,
-    mergeSortWithSteps
+    mergeSortWithSteps,
+    bubbleSortIterative
 };
